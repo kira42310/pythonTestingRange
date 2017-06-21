@@ -16,7 +16,7 @@ def byte_to_mega(num):
 
 def minute_average(data):
     '''
-    Avarage data in 1 minute
+    Avarage data in 10 seconds
     '''
     tmp = []
     avg = 0
@@ -24,8 +24,8 @@ def minute_average(data):
     for itm in data:
         avg += itm
         counter += 1
-        if counter == 60:
-            tmp.append(byte_to_mega(avg/60))
+        if counter == 10:
+            tmp.append(byte_to_mega(avg/10))
             avg = 0
             counter = 0
     if counter != 0:
@@ -42,8 +42,8 @@ def minute_average_noconvert(data):
     for itm in data:
         avg += itm
         counter += 1
-        if counter == 60:
-            tmp.append(avg/60)
+        if counter == 10:
+            tmp.append(avg/10)
             avg = 0
             counter = 0
     if counter != 0:
@@ -60,7 +60,7 @@ def plot_cpu(usr, sys, idl, wai, filename):
     plt.plot(sys, label='CPU System', linestyle = '--', color = 'k')
     plt.plot(idl, label='CPU Idle', linestyle = '-.', color = 'k')
     plt.plot(wai, label='CPU Wait', linestyle = ':', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('CPU usage(%)')
     plt.title('CPU usage')
     plt.legend()
@@ -72,7 +72,7 @@ def plot_memory(usd, buf, cach, free, filename):
     plt.plot(buf, label='Memory Buffer', linestyle = '--', color = 'k')
     plt.plot(cach, label='Memory Cache', linestyle = '-.', color = 'k')
     plt.plot(free, label='Memory Free', linestyle = ':', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('Memory usage(MB)')
     plt.title('Memory usage')
     plt.legend()
@@ -82,7 +82,7 @@ def plot_disk(read, writ, filename):
     plt.figure()
     plt.plot(read, label='Disk Read', linestyle = '-', color = 'k')
     plt.plot(writ, label='Disk Write', linestyle = '--', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('Storage speed(MB)')
     plt.title('Storage usage')
     plt.legend()
@@ -92,7 +92,7 @@ def plot_network(send, recv, filename):
     plt.figure()
     plt.plot(send, label='Network Send', linestyle = '-', color = 'k')
     plt.plot(recv, label='Network Receive', linestyle = '--', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('Network speed(MB)')
     plt.title('Network usage')
     plt.legend()
@@ -102,7 +102,7 @@ def plot_swap(usd, fre, filename):
     plt.figure()
     plt.plot(usd, label='Used', linestyle = '-', color = 'k')
     plt.plot(fre, label='Free', linestyle = '--', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('Size(MB)')
     plt.title('Swap memory usage')
     plt.legend()
@@ -112,7 +112,7 @@ def plot_paging(i, o, filename):
     plt.figure()
     plt.plot(i, label='In', linestyle = '-', color = 'k')
     plt.plot(o, label='Out', linestyle = '--', color = 'k')
-    plt.xlabel('Minute(s)')
+    plt.xlabel('10 Second(s)')
     plt.ylabel('Speed(MB)')
     plt.title('Paging usage')
     plt.legend()
